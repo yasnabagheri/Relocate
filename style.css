@@ -5,20 +5,32 @@
 
 @font-face {
   src: url("fonts/Circular-Std-Font/circular-std-medium-500.ttf");
-  font-family: circular-std;
+  font-family: "circular-std";
+}
+
+@font-face {
+  src: url(fonts/Allison/Allison-Regular.ttf) format("truetype");
+  font-family: "allison";
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 :root {
+  --color-primary: #41d6c7;
   --color-primary-yellow: #ffc700;
   --color-black: #000;
   --color-white: #fff;
+  --color-primary-white: #cbe7e4;
   --color-light-gray: #f4f4f4;
+
+  --font-family-primary: "Circular Std", sans-serif;
 }
 
 * {
   padding: 0;
   margin: 0;
-  box-sizing: 0;
+  box-sizing: border-box;
 }
 
 .header__nav-wrapper {
@@ -71,7 +83,9 @@
 .hero-section {
   position: relative;
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
+  /* overflow: hidden; */
+  height: calc(100vh - 80px);
   background-image:
     linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
     url(assets/images/banner.png);
@@ -88,23 +102,169 @@
 
 .hero__title--script {
   display: block;
-  font-family: allison-script;
+  font-family: allison;
   color: var(--color-primary-yellow);
-  font-size: 160px;
+  font-size: 300px;
+  /* font-size: 100px; یا clamp(50px, 8vw, 110px) */
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
   -webkit-text-stroke: 1.5px var(--color-black);
   paint-order: stroke fill;
 
-  margin-bottom: -55px;
+  margin-bottom: -70px;
 }
 
 .hero__title--bold {
   display: block;
   font-family: circular-std;
-  font-size: 300px;
+  font-size: 250px;
   font-weight: 900;
 
-  line-height: 0.9;
+  line-height: 0.5;
   color: var(--color-white);
   text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.explore-btn {
+  position: absolute;
+  right: 80px;
+  bottom: 50px;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+
+  color: var(--color-white);
+  font-family: circular-std;
+  width: 170px;
+}
+
+.explore-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px dotted rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.explore-icon img {
+  width: 55px;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+  /* height: auto; */
+}
+
+.explore-text span {
+  color: #ffffff;
+  font-family: "Circular Std";
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.top-destinations {
+  background: #00beac;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 190, 172, 1) 66%,
+    rgb(245, 255, 254) 88%
+  );
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 150px 70px;
+
+  font-family: var(--font-family-primary);
+}
+
+.top-destinations__title {
+  position: relative;
+  /* display: inline-block; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 45px;
+}
+
+.top-destinations__title__img {
+  position: absolute;
+  top: -60px;
+  width: 130px;
+}
+
+.top-destinations__title__h2 {
+  color: var(--color-white);
+  font-size: 80px;
+}
+
+.top-destinations__desc {
+  color: var(--color-white);
+  width: 600px;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 90px;
+}
+
+.top-destinations__items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.top-destinations__card {
+  position: relative;
+  overflow: hidden;
+  width: 310px;
+  border-radius: 10px;
+}
+
+.top-destinations__item {
+  width: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.top-destinations__card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  z-index: 2;
+}
+
+.card-content {
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 3;
+  color: #ffffff;
+  font-family: var(--font-primary);
+}
+
+.card-content h3 {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
+
+.card-content p {
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  opacity: 0.8;
+  text-transform: uppercase;
 }
